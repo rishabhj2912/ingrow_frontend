@@ -1,0 +1,111 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: Inter;
+  src: '../assets/fonts/inter.ttf';
+}
+@font-face {
+  font-family: Poppins;
+  src: '../assets/fonts/poppins.ttf';
+}
+
+body {
+  height: 100vh;
+  width: 100vw;
+  font-family: Inter;
+  color: #172935;
+}
+
+@layer components {
+  .scroll-snap-y {
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+  }
+
+  .post-scroll-snap {
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .animate-rotate {
+    animation: rotate 1s linear infinite;
+  }
+
+  .loader {
+    position: relative;
+    width: 30px;
+    height: 30px;
+  }
+
+  .loader:before,
+  .loader:after {
+    content: '';
+    border-radius: 50%;
+    position: absolute;
+    inset: 0;
+  }
+  .loader:after {
+    box-shadow: 0 2px 0 #756bf6 inset;
+    animation: rotate 2s linear infinite;
+  }
+  .lines-background {
+    background: repeating-linear-gradient(
+      to right,
+      transparent,
+      transparent 1px,
+      white 2px,
+      white 4px
+    );
+  }
+  .container {
+    overflow: hidden;
+    height: 60vh;
+    width: 600px;
+  }
+
+  .sliding-background {
+    --Height: 500px;
+    height: calc(var(--Height) * 2);
+    animation: slide 4s linear infinite;
+    width: 500px;
+  }
+
+  @keyframes slide {
+    from {
+      transform: translateY(0px);
+    }
+    to {
+      transform: translateY(calc(var(--Height) * -1));
+    }
+  }
+}
+
+.comment-box:hover {
+  .comment {
+    background-color: #297aff12;
+    margin-right: 6px;
+  }
+  .comment-actions {
+    display: block;
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
